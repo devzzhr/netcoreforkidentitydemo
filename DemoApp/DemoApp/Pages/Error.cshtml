@@ -1,0 +1,28 @@
+﻿@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Erreur";
+}
+
+<h1 class="text-danger">Erreur.</h1>
+<h2 class="text-danger">Une erreur a été observée.</h2>
+
+@if (Model.ShowRequestId && Request.Host.Value.StartsWith("localhost"))
+{
+    <p>
+        <strong>Identifiant de requête:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+@if (Model.AuthentMsg != null)
+{
+    <p>
+        <strong>Authentification:</strong> <code>@Model.AuthentMsg</code>
+    </p>
+}
+@if (Model.statuscodeMsg != null)
+{
+    <p>
+        <strong>Erreur:</strong> <code>@Model.statuscodeMsg</code>
+    </p>
+}

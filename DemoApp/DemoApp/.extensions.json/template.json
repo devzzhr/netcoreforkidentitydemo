@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "zzhr.fr",
+  "classifications": [ "webapp", ".net core web app" ],
+  "identity": "DotNetCoreWebApp.withAuthent",
+  "name": ".net core web app templates: avec authentification",
+  "shortName": "CoreWebAppWithAuthent",
+  "sourceName": "Even",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "profiles": {
+
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "Authentication:Microsoft:ClientId": "localclientID-preferer-userSecretjson",
+        "Authentication:Microsoft:ClientSecret": "localclientSecret-preferer-userSecretjson"
+      },
+      
+    }
+    
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:20699/DemoApp",
+      "sslPort": 44315
+    }
+  }
+}

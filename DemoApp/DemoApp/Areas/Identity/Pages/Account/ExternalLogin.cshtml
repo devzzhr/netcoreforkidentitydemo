@@ -1,0 +1,71 @@
+﻿@page
+@model ExternalLoginModel
+@{
+    ViewData["Title"] = "S'enregistrer";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+    <h2 id="external-login-title">1. Associer votre compte @Model.ProviderDisplayName</h2>
+    <hr />
+
+    <p id="external-login-description" class="text-info">
+        Vous vous êtes bien authentifié avec votre compte <strong>@Model.ProviderDisplayName</strong>.
+        
+       
+    </p>
+    <h2 id="external-login-title">2. Valider votre enregistrement</h2>
+    <hr />
+
+    <p id="external-login-description" class="text-valid">
+
+       
+            @if(Model.estBC == false )
+        {
+           <p>Un précédent enregistrement a été interrompu.</p>
+            <p> Reprendre votre enregistrement et confirmer votre adresse '@Model.Input.Email'.<br />
+                
+    <br /> 
+     <form asp-page-handler="BaseContact" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <button type="submit" class="btn btn-lg btn-primary">Oui, je confirme cette adresse</button>
+    
+</form>    
+</p>
+    } 
+    else{
+          <p>
+          Confirmer l'enregistrement de l'adresse '@Model.Input.Email'
+          <br/>
+            <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="email"  hidden/>
+                 <!--   <label asp-for="Input.Email" class="form-label"></label>-->
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary">je confirme</button>
+            </form>
+    </p>
+    }
+        
+
+    </p>
+    <div class="row">
+       <!--
+       <div class="col-md-4">
+            <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="email" />
+                    <label asp-for="Input.Email" class="form-label"></label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <button type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            </form>
+        </div>
+        -->
+    </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

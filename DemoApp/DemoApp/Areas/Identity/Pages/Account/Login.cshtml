@@ -1,0 +1,65 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Se connecter";
+}
+
+<h1>@ViewData["Title"]</h1>
+@{ 
+    if (TempData["Message"]!= null)
+     {
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            @TempData["Message"]
+        </div>
+
+        }
+        }
+@if (User.Identity?.IsAuthenticated == false)
+{
+    <div class="row">
+        <div class="col-md-10 col-md-offset-2">
+            <section>
+                <h3>Se connecter en utilisant un des services suivants</h3>
+                <hr />
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                    {
+                        <div>
+                            <p>
+                                Aucun autre service disponible pour le moment.
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            <div>
+                                <p>
+                                    @foreach (var provider in Model.ExternalLogins!)
+                                    {
+                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Se connecter en utilisant votre comptre @provider.DisplayName ">se connecter avec un compte @provider.DisplayName</button>
+                                    }
+                                </p>
+                            </div>
+                        </form>
+                    }
+                }
+                <span>Nouveau? accéder à la page dédiée à partir de la barre de navigation supérieure.</span>
+            <br/>
+                 <i>Pour plus d'informations concernant les informations partagées avec cette application veuillez consulter les <a asp-area="" asp-page="/Privacy">mentions légales</a>. </i>
+
+            </section>
+        </div>
+
+    </div>
+}
+else
+{
+    @Html.Raw("Vous êtes connecté(e).")
+    ;
+}
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

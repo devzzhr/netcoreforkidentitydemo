@@ -1,0 +1,22 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Nouveau";
+}
+
+<h1>@ViewData["Title"]</h1>
+<span>Vous êtes nouveau? <br />
+    Un enregistrement de votre compte sur cette application vous sera demandé. <br />
+    Et si vous n'avez pas encore utilisé une application ou un service du dommaine zzhr.fr un enregistrement à la base de contact du domaine vous sera demandé.
+    <br />
+    <br />
+   
+        Pour plus d'informations concernant les informations partagées avec cette application veuillez consulter les
+        <a asp-area="" asp-page="/Privacy">Mentions légales</a>. 
+    
+
+</span>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
